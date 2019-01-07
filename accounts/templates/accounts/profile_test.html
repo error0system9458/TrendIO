@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "accounts/profile_test/stylesheet.css" %}">
+
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "accounts/profile_test/script.js" %}">
+
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile Test</title>
+</head>
+{% endblock %}
+<body>
+    {% block body %}
+    <div class="" style="font-family: 'Asap Condensed'; padding: none;">
+<!--         
+    <img style="height: 200px; width: 100%; object-fit:cover;" src="">
+     -->
+     
+
+            
+    <div style="display: flex;" class="row">
+
+    <div style="box-shadow: inset 3px 3px 10px 0 #000000; position: relative;" >
+
+
+    <img id="cover-image" src="https://wallpapercave.com/wp/wp1745097.jpg" class="img-fluid" alt="https://via.placeholder.com/400x500">
+
+    
+    <div style=" position: absolute; left: 30%; top: 80%;">
+    <h1 style="color:white;" class="uk-light" >@{{ user.username }}</h1>   
+    </div>    
+    </div>
+     
+
+    <div id="card-design" class="col-3-auto" >
+    {% if userprofile.image %}
+
+    <div>
+    
+    <div style="position: relative;"> 
+         <img id="profile-image" src="{{ userprofile.image.url }}">
+         <div class="row" >
+    
+            <div class="col-6">
+    <form >
+           <button id="follow-button" class="btn">Follow</button>
+           
+     </form>
+    </div>
+
+    <div class="col-6">
+     <form >
+            <button id="like-button" class="btn"><ion-icon  name="heart"></ion-icon></button>
+            
+      </form>
+
+      </div>
+
+    </div>
+    </div>
+
+    
+     <div style="padding: 20px;" class="container">
+        <h5 class="uk-text-muted"><center>Social Score</center></h5>
+
+
+        <a class="uk-link-heading" href=""><h1 style="font-size: 50px;"><center>{{ userprofile.social_score }}</center></h1></a>
+       
+                <div id="bio" class="container">
+                I am a SoundCloud artist from New York City.
+                I like Pink Floyd and Laser Floyd
+
+                <hr class="uk-divider-icon">
+            </div>
+            <div id="social-info" class="row">
+                <div class="col-1-auto"><h6 class="uk-text-muted">Followers</h6><div uk-spinner></div>
+            </div>
+                <div class="col-1-auto"><h6 class="uk-text-muted">Following</h6><div uk-spinner></div>
+            </div>
+                <div class="col-1-auto"><h6 class="uk-text-muted">Songs</h6><div uk-spinner></div>
+            </div>
+               
+            </div>
+            
+        </div>
+
+    </div>
+
+
+    {% else %}
+    
+    <div>
+    
+            <div style="position: relative;"> 
+                 <img id="profile-image" src="https://i.ytimg.com/vi/KEkrWRHCDQU/maxresdefault.jpg">
+            <form >
+                   <button id="follow-button" class="btn">Follow</button>
+             </form>
+        
+            </div>
+        
+            
+             <div style="padding: 20px;" class="container">
+                <h5><center>Social Score</center></h5>
+        
+        
+                <a class="uk-link-heading" href=""><h1 style="font-size: 60px;"><center>{{ userprofile.social_score }}</center></h1></a>
+               
+                <h5>
+                </h5>
+                    <p style=" margin: 10% auto;" >
+                        <div id="bio" class="container">
+                        I am a SoundCloud artist from New York City.
+                        I like Pink Floyd and Laser Floyd
+                        </div>
+                    </p>
+                </div>
+            </div>
+
+    {% endif %}
+
+    </div>
+
+    <div class="col-8" >
+    <div id="jam-card" class="card">
+
+
+       <h5 class="uk-text-meta" >Belinda Carlisle</h5>
+       <h4 class="">Heaven is a place on earth</h4>
+       <div class="card-body">
+
+        <div style="margin-top: 10px;">
+       <audio controls>
+            <source src="" type="audio/ogg">
+            <source src="horse.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+          </audio>
+        </div>
+
+        </div>
+        </div>
+
+
+        <div class="" id="storyboard-panel">
+                <h2>@{{ user.username }} Storyboard</h2>
+        <hr class="uk-divider-icon">
+        
+
+        
+            </div>
+        </div>
+
+
+    </div>  
+
+    
+    
+    </div>
+
+</div>
+    {% endblock %}
+</body>
+</html>

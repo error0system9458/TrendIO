@@ -1,0 +1,114 @@
+body{
+    background-color: #1B1B1B;
+}
+
+
+#profile-image{
+    height: 400px; 
+    width: 300px; 
+    object-fit:cover;
+}
+
+
+#bio{
+    height: 100%;  
+    width: 250px;
+    overflow: hidden; 
+    text-overflow:ellipsis;
+}
+
+
+#card-design{  
+    margin-left: 50px; 
+    margin-top:-120px; 
+    height: 800px;
+    background-color: white;
+    margin-bottom: 20px;  
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    
+}
+
+
+
+
+#card-photos-design{
+    margin-top: 12px;
+    width: 18rem; 
+    box-shadow: 10px 10px gray;
+    transition: all .2s ease-in-out;
+    
+}
+
+#card-photos-design:hover{
+    box-shadow: 10px 10px gray; 
+    transform: scale(1.02);
+
+}
+
+
+
+#follow-button{
+    margin-left: 90%;
+    background-color: #ff5d38;
+    bottom: 10px; 
+    color:white; 
+    position: absolute;
+}
+
+#like-button{
+    margin-left: 40%;
+    background-color: #ff5d38;
+    bottom: 10px; 
+    color:white; 
+    position: absolute;
+}
+
+#jam-card{
+    margin-left: 30px;
+    margin-top: 20px;
+    width: 100%;
+    padding: 30px;
+    height: 40%;
+    color: white;
+    background-color: #2E2A2E;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+#jam-card-close{
+    display:block;
+}
+
+
+#storyboard-panel{    
+
+    margin-top: 20px;
+    width: 100%;
+    padding: 30px;
+    height: 100%;
+    background-color: #2E2A2E;
+    color: white;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    margin-left: 30px; 
+    text-align: center;
+
+}
+
+
+#cover-image{
+    background-color: white;
+    border: 2px solid black;
+    width: 100%; 
+    height:300px; 
+    object-fit:cover;
+}
+
+
+#social-info{
+    margin: 30% auto;
+}
+
+#social-info div{
+    text-align: center;
+    margin: 0% auto;
+}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Log In</title>
+
+</head>
+<body>
+	<div class="container">
+	{% block body %}
+	<h1>You've logged out</h1>
+	<h2>To get back online, login again.</h2>
+	<button type="button" class="btn btn-primary" href="accounts/login">Login</button>
+	</div>
+	{% endblock %}
+</body>
+</html>

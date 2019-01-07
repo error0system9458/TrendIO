@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	<title>Log In</title>
+
+</head>
+{% endblock %}
+<body>
+	{% block body %}
+
+	<div class="jumbotron" style="background-color: #D9F7FA;">
+
+	<h1 style="text-align:center; margin-bottom: 30px;">TrendIO. The Last Stop.</h1>
+	<div style="text-align: center; margin: auto;">
+	<h2>Login</h2>
+	<form class="form-group" method="post" >
+		{% csrf_token %}
+		{{form.as_p}}
+		<button width="39" type="submit" class="btn btn-lg btn-primary">Login</button>
+	</form>
+	</div>
+
+	<p style="line-height: 200px" class="text-muted">© TrendIO 2018</p>
+</div>
+	</div>
+	{% endblock %}
+</body>
+
+</html>

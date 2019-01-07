@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Profile</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="card" style="margin: 0 auto; margin-top: 20px; text-align: center; width: 40em; box-shadow: 1px 1px 20px 1px gray;">
+		
+	<div class="card-title" style="padding: 10px; text-align: center; background-color: aquamarine;"><h4>Change your info.</h4></div>
+	<div class="card-body">
+	<form method="POST">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button class="btn btn-outline-success" type="submit">Save</button>
+	</form>
+	</div>
+
+</div>
+{% endblock %}

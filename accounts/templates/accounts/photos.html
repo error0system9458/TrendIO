@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>{% block head %}
+	<title>Your Photos</title>
+	{% endblock %}
+</head>
+<body>
+	{% block body %}
+	<div style="text-align: center;" class="jumbotron">
+
+	{% if pk == request.user.id %}
+	<h1>Your Photos</h1>
+
+	{% else %}
+	<h1>{{ user.username }} Photos </h1>
+
+	{% endif %}
+</div>
+
+	{% endblock %}
+
+</body>
+</html>

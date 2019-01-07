@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	<title>My Music</title>
+	
+	{% load staticfiles %}
+	<link rel="stylesheet"href="{% static "accounts/profile/stylesheet.css" %}"></link>
+	{% endblock %}
+</head>
+
+<body >
+	{% block body %}
+	
+	<div class="jumbotron" style="text-align: center;">
+		<h1 class="card-title">Welcome back {{ user.first_name }}.</h1>
+
+		<div class="card" style="width: 18rem; text-align:center; margin: 15% auto;">
+				<h1 class="card-title">Albums for  {{ user.first_name }}.</h1>
+				<h4 class="card-text">Here are your exceptionally picked albums.</h4>
+			<button type="button" class="btn btn-default btn-lg">
+				<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Delete
+			</button>			
+	</div>
+
+	
+
+
+<nav class="navbar fixed-bottom navbar-dark bg-dark" style="padding: 5px;">
+	
+<div style="margin-left: 10%; ">
+		<img style="float: left;" height="90px" width="90px" src="https://i.ytimg.com/vi/GX8Hg6kWQYI/sddefault.jpg#404_is_fine">
+
+			<div style="padding-left: 90px;">
+			<a class="nav-link text-light"  href="#">Moonlight</a>
+			<a class="nav-link disabled" href="#">XXXTentacion</a>
+		</div>
+	</div>
+	</nav>
+
+</div>
+
+<!-- <audio controls>
+		<source src="horse.mp3" type="audio/mpeg">
+	  Your browser does not support the audio element.
+	  </audio>
+	{% endblock %} -->
+
+</body>
+</html>

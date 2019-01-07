@@ -1,0 +1,25 @@
+#card-design{
+    width: 25em; 
+    height: 250px; 
+    background-color: #ccc; 
+    margin: 2% auto;
+    transition: all .2s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px 5px gray; 
+}
+
+
+#card-design:hover{
+
+    box-shadow: 10px 10px gray; 
+    transform: scale(1.02);
+}
+
+#label[for="id_image"]{
+    background-color: blue;
+}
+
+#input [for="file"]{
+    background-color: blue;
+}
+

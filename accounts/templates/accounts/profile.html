@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Profile</title>
+{% load staticfiles %}
+<link rel="stylesheet"href="{% static "accounts/profile/stylesheet.css" %}"></link>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="body">
+
+<div style="font-family: 'Asap Condensed';" >
+
+
+<div class="container" >
+
+	{% if messages %}
+	{% for message in messages %}
+	
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		<center><strong>All Done!</strong>  {{ message }} </center>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	  </div>
+
+	  
+	{% endfor %}
+	{% endif %}
+
+<div class="row" style="margin: 15% auto;">
+
+<div class="col-sm-4" style=" margin: 10px;" >
+
+
+<div class="card" id="card-design" >
+
+{% if user == request.user %}
+<h1 class="card-title" style="padding: 10px; text-align: center; background-color: #E94F37; ">My Profile</h1>
+
+{% else %}
+<h1 class="card-title" style="padding: 10px; text-align: center; background-color: #E94F37;">TrendIO User</h1>
+{% endif %}
+
+
+{% if userprofile.image %}
+<img class="card-img-top" style="float: left; border-radius: 50%; height: 150px; width: 150px; background-size: cover; background-position: center; background-blend-mode: multiply; vertical-align: middle; text-align: center; color: transparent; "  src="{{ userprofile.image.url }}" >
+
+{% else %}
+<img style="float: left; border-radius: 50%; height: 150px; width: 150px; background-size: cover; background-position: center; background-blend-mode: multiply; vertical-align: middle; text-align: center; color: transparent; "  src="https://cdn8.bigcommerce.com/s-5ylnei6or5/images/stencil/1280x1280/products/506/1581/741-Donald-Duck__87049.1497284241.jpg?c=2&imbypass=on" >
+
+{% endif %}
+
+<div class="card-body" style="background-color: #EAF6FF;">
+
+{% if user == request.user %}
+<div style="text-align: center;">
+<a href="{% url 'accounts:profile_photo_upload' %}"><button style="" class="btn btn-success">Upload Profile Photo</button></a>
+</div>
+{% else %}
+
+{% endif %}
+
+<h2 style="text-align: center;" >
+	{% if user == request.user %}
+	Hey {{ user.first_name }}!
+
+	{% else %}
+	Say Hi to {{user.username}}
+	{% endif %}
+
+</h2>
+<h6 style="text-align: center;">Social Score: <h1 style="text-align: center; font-size: 90px;">{{ userprofile.social_score }}</h1> </h6>
+
+
+
+
+<form method="POST" action="{% url 'accounts:like_user' %}">
+{% csrf_token %}
+
+{% if is_liked is True %}
+<button class="btn btn-danger" name="userprofile" value="{{userprofile.id}}" type="submit">Dislike</button>
+<br>
+<br>
+<h4>You've liked {{ user.username }}  <img src="https://png.icons8.com/color/48/000000/smiling-face-with-heart.png"> </h4>
+{% else %}
+<button class="btn btn-primary" name="userprofile" value="{{userprofile.id}}" type="submit">Like</button>
+{% endif %}
+</form>
+
+<br>
+<br>
+
+{% if user == request.user %}
+<form style="text-align: center;" action="{% url 'accounts:edit_profile' %}">
+	<input class="btn btn-warning" type="submit" value="Edit Profile">
+</form>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+<div style=" text-align: center; " class="col-sm-3" >
+
+{% if user == request.user %}
+
+<div  class="">
+
+	<div class="card" id="card-photos-design">
+
+	<h3 class="card-title" style=" padding: 10px; text-align: center; background-color: #E94F37;" ><a style="color: black; text-decoration:none ;" href="{% url 'accounts:photos' %}">My Photos </a> </h3>
+	  <img class="card-img-top" src="https://png.icons8.com/dusk/512/000000/google-photos.png" alt="Card image cap">
+	  <div class="card-body">
+	    <p class="card-text">We went to the venice beach in california</p>
+
+	    <form method="POST">
+		{% csrf_token %}
+		{{form.as_p}}
+
+<button class="btn btn-outline-info" type="submit">Like</button>
+		</div>
+</form>
+
+	  </div>
+	</div>
+
+
+{% else %}
+<div  class="container">
+	<div class="card" id="card-photos-design">
+
+	<h3 class="card-title" style="padding: 10px; text-align: center; background-color: rgb(131, 231, 240);">{{ user.username }}'s Gallery</h3>
+	  <img class="card-img-top" src="/venice.jpg" alt="Card-image-cap">
+	  <div class="card-body">
+	    <h5 class="card-title">    		</h5>
+	    <p class="card-text">			</p>
+
+	    <form method="POST">
+		{% csrf_token %}
+		{{form.as_p}}
+<button class="btn btn-outline-info" type="submit">Like</button>
+	</form>
+
+	  </div>
+	</div>
+</div>
+</div>
+{% endif %}
+
+</div>
+</div>
+
+</div>
+</div>
+{% endblock %}

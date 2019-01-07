@@ -1,0 +1,78 @@
+.navbar-color{
+    border-bottom: 1px solid transparent;
+
+    transition: width 2s;
+    -webkit-transition: width 2s;
+}
+
+.navbar-color li{
+    border-bottom: 1px solid transparent;
+
+}
+
+.navbar-color li :hover{
+    color: white;
+    border-bottom: 1px solid #ff5d38;
+}
+
+
+
+#signature-button-color{
+   background-color: #ff5d38;
+}
+
+
+.notification-panel{
+    width: 400px;
+    height: 400px;
+}
+
+
+.notification-panel a{
+    padding: 20px;
+    height: 75px;
+    text-align: center;
+}
+
+.notification-panel ion-icon{
+    float: left;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius:50%;
+}
+
+
+.notification-panel span{
+    float: right;
+}
+
+
+
+
+.messages-panel{
+    width: 400px;
+    height: 400px;
+}
+
+.messages-panel strong{
+    float: left;
+    margin-left: 5px;
+}
+
+.messages-panel a{
+    padding: 20px;
+    height: 75px;
+    text-align: center;
+}
+
+.messages-panel span{
+    float: right;
+}
+
+.messages-panel img{
+    width: 40px;
+    image-rendering: auto;
+    height: 40px;
+    border: 2px solid #EE6C4D;
+    border-radius: 50%;
+}

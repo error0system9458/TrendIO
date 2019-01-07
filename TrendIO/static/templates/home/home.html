@@ -1,0 +1,296 @@
+{% extends 'base.html' %}
+{% include notifications_set %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	
+	<!-- Dont wanna use highcharts that much. -->
+	<script src="https://code.highcharts.com/highcharts.src.js"></script>
+	<script src="path/to/chartjs/dist/Chart.js"></script>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<title>TrendIO-Home</title>
+	{% load staticfiles %}
+	<link rel="stylesheet"href="{% static "accounts/profile/stylesheet.css" %}"></link>
+
+	{% load staticfiles %}
+	<link rel="stylesheet"href="{% static "static/home/stylesheet.css" %}"></link>
+
+
+	{% load staticfiles %}
+	<link rel="stylesheet"href="{% static "static/home/script.js" %}"></link>
+
+
+
+	{% endblock %}
+</head>
+<body>
+	{% block body %}
+	<div class="body">
+
+		<div style="display: flex; font-family: Asap Condensed;">
+
+<!-- following and stuff -->
+
+				<!-- <div style="border-top: 2px solid gray; display:flex; text-align: center; justify-content:center; align-items:center; margin: 89% auto;" >
+				<table style="border-collapse: separate; border-spacing: 10px;">
+					<tr >
+						<th style="border-right: 1px solid black;"> Friends</th>
+						<th > Social Score  </th>
+					</tr>
+
+					<tr >
+						<th style="border-right: 1px solid black;">{{ friends|length }}</th>
+						
+						<th >{{ userprofile.social_score }} </th>
+					</tr>
+				</table>
+
+
+				
+				</div>
+			 -->
+
+
+<!-- Experimental only... Adding another row. -->
+
+			
+
+
+<!-- 						Idk. restore i guess?
+					 <div style="padding-top: 2px; border-top: 2px solid #ccc; text-align: center; margin: 97% auto;">
+
+				<div style="padding-right:47px; margin-left:30px; margin-right: 30px; float: left; border-right: 2px solid rgba(204, 204, 204, 0.61); ">
+				
+				<h6>Social Score</h6>
+				<h3 >{{ userprofile.social_score }} </h3>
+				</div>
+
+
+				<div style="padding-left: 10px; margin-right: 30px; margin-left: 30px;">
+					<h6>Friends</h6>
+					<h3 > {{friends|length}} </h3>
+				</div>
+				
+			</div> -->
+				</div>
+
+			
+
+				</div>
+			
+
+
+
+
+			</div>
+		</div>
+
+
+
+
+
+	<div class="container" style="font-family:'Asap Condensed';  margin: 0% auto;">
+
+		<div class="row" style="margin-top: 10px;">
+
+			<div id="card-design-profile" class="">
+
+				<div class="col-4-auto col order-5">
+			
+					<div>
+			
+					{% if userprofile.image %}
+					<img class="card-img-top" style="vertical-align: 0%; float: left; border-radius: 50%; height: 100px; width: 100px; background-size: cover; background-position: center; background-blend-mode: multiply; vertical-align: middle; text-align: center; color: transparent; "  src="{{ userprofile.image.url }}" >
+			
+					{% else %}
+					<img style="float: left; border-radius: 50%; height: 150px; width: 150px; background-size: cover; background-position: center; background-blend-mode: multiply; vertical-align: middle; text-align: center; color: transparent; "  src="https://cdn8.bigcommerce.com/s-5ylnei6or5/images/stencil/1280x1280/products/506/1581/741-Donald-Duck__87049.1497284241.jpg?c=2&imbypass=on" >
+			
+					{% endif %}
+			
+						<div style="margin: 10px;">
+						<h5>  {{logged_in_user.first_name}} {{logged_in_user.last_name}}</h5>
+						<a id="signature-text-color" style="text-decoration: none;" href="{% url 'accounts:profile' %}"><h5>@{{logged_in_user.username}} <img src="https://png.icons8.com/office/30/000000/ok.png"></h5></a>
+						
+					
+				<div style=" position: relative; margin: 30% auto; padding-top: 2px; border-top: 2px solid #ccc; text-align: center;">
+			
+					<div style="padding-right:4px; margin-left:0px; margin-right: 3px; float: left; border-right: 2px solid rgba(204, 204, 204, 0.61);">
+						<h6 class="text-muted">Friends</h5>
+						<h6 id="signature-text-color">{{ friends|length }}</h6>
+					</div>
+			
+					<div style="padding-left: 1px; margin-right: 5px; margin-left: 3px;">
+						<h6 class="text-muted">Social Score</h6>
+						<h6 id="signature-text-color">{{userprofile.social_score }}</h6>
+					</div>
+					</div>
+			
+			
+					<!-- <div style="padding-top: 2px; border-top: 2px solid #ccc; text-align: center; margin: 97% auto;">
+			
+			
+			
+					<div style="padding-right:47px; margin-left:30px; margin-right: 30px; float: left; border-right: 2px solid rgba(204, 204, 204, 0.61); ">
+					<h6>Social Score</h6>
+					<h6 >{{ userprofile.social_score }} </h6>
+					</div>
+			
+			
+					<div style="padding-left: 10px; margin-right: 30px; margin-left: 30px;">
+						<h6>Friends</h6>
+						<h3 > {{friends|length}} </h3>
+					</div>
+			
+			
+				</div> -->
+				
+					</div>
+					</div>
+					</div>
+			
+			</div>
+			<table id="discover-people" style="">
+				<tr>
+					<th>USERNAME</th>
+					<th>BUTTON</th>
+				</tr>
+
+
+				{% for user in users %}
+				{% if not user in friends %}
+
+				<tr>
+					<td > 
+						<a id="signature-text-color" style="float: left; text-decoration:none;" href="{% url 'accounts:profile_pk' pk=user.pk %}" > {{user.username }} 
+						</a>
+					</td>
+
+				</tr>
+
+				{% endif %}
+				{% endfor %}
+			</table>
+
+
+			<div  style="" class="col-3">
+					<div style="padding: 10%; text-align: center; background-color:#2E2A2E; color: white; " class="">
+					<h5>Discover People</h5>
+						{% for user in users %}
+						{% if not user in friends%}
+	
+						<a style="float: left; text-decoration:none;" href="{% url 'accounts:profile_pk' pk=user.pk %}">
+							<h6 id="signature-text-color" >
+								{{ user.username }}
+						</h6>
+
+						</a>
+						{% endif %}
+	
+	
+						{% if not user in friends %}
+						<ul style="list-style-type: none; ">
+						<li >
+							<a href="{% url 'home:change_friends' operation='add' pk=user.pk %}">
+								<button  class='btn btn-primary'><i  class=""></i></button>
+							</a>
+						</li>
+						
+						</ul>
+						{% endif %}
+						{% endfor %}
+	
+						<br>
+	
+						
+						<h5>Your Friends</h5>
+							{% for friend in friends %}
+							<a style="float:right; text-decoration:none;" href="{% url 'accounts:profile_pk' pk=friend.pk %}">
+								<h6>{{ friend.username }}</h6>
+							</a>
+							<a style="" href="{% url 'home:change_friends' operation='remove' pk=friend.pk %}">
+								<h5>
+									<button class='btn btn-outline-danger'><i class="fa fa-user-times"></i></button>
+							</h5>
+							</a>
+							{% endfor %}
+	
+				</div>
+				</div>
+
+
+			<div class="col-sm-7">
+				<div style="color:white; background-color: #2E2A2E;" class="container">
+					{% for notification in notifications_set %}
+					<h2 style="padding-top: 10px; text-align:center;">Notifications: {{ notification }}</h2>
+					{% endfor %}
+					<form style="margin: 0 auto; width: 50%; text-align: center ; padding: 5px " action="" method="POST" action="{% url 'home:home' %}"  enctype="multipart/form-data">
+					{% csrf_token %}
+					 {{form.post}}
+					{{form.image }}
+					<button style="color: white; background-color: #EE6C4D;" class="btn" type="submit">Post</button>
+				</form>
+
+				{% for post in posts %}
+				<div style="margin-bottom: 2px" class="container">
+					<hr>
+				<h2 ><a id="signature-text-color"  href="{% url 'accounts:profile'  %}" style="text-decoration: none;">@{{ post.user }} </a></h2>
+				<h4 >{{ post.post }}</h4>
+				{% if post.image %}
+				<img style="object-fit: scale-down; width: 100%; height: 390px;" src="{{post.image.url }}" >
+				{% endif %}
+			</div>
+				<p>Posted on: {{post.created}}</p>
+				{% endfor %}
+				</div>
+
+			</div>
+			
+			
+			<div style="text-align: center; width: 252px; height: 500px; padding: 25px;color:white; background-color:#2E2A2E;" class="col-2-auto">
+			<h1>
+					Graph Prototype
+			</h1>
+			<canvas id="myChart" width="400" height="400"></canvas>
+
+			</div>
+
+
+
+
+<div style= "max-height: 100px; width: 15.7em;" class="col-3-auto">
+				<div style="padding: 15px; padding-bottom: 5px; background-color:#fff;  box-shadow: 4px 4px 3px #cccccc;" class="container">
+						<h4 style="border-bottom: 3px solid silver;  text-align: center;">Weather Now</h4>
+						<img style="float: left; height:50px; width:50px; " src="http://openweathermap.org/img/w/{{ icon }}.png">
+						<h2 style="margin-top:20px; text-align: center; font-size:34px;">{{ temp }} &#8457 </h2>
+						<h4 style="font-size: 15px;">{{ city }}, {{country}}</h4>
+						<h4 style="font-size: 14px;">{{ sky|capfirst }}</h4>
+						<h5 style="font-size: 14px;">Server Time: {{ local_time }}</h5>
+						<img style="display: block; padding: none; margin-left: auto; margin-right: auto; width: 50%; height: 90px; width: 90px;" src="../../static/icons/animat-checkmark.gif">
+						<footer style="font-size: 10px; border-top: 1px solid #a8a4a4; text-align: center; " class="text-muted"><a target="_blank" style="text-decoration: none; color: gray;" href="https://openweathermap.org/"> Powered By OpenWeatherMap.org</a></footer>
+	</div>
+</div>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+
+
+
+	{% endblock %}
+
+
+</body>
+</html>

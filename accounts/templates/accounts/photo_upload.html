@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/photo_upload/stylesheet.css' %}"/>
+
+<title>Photo Upload</title>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="body" style="font-family: Asap Condensed" >
+	<div  class="card" id="card-design" >
+	
+
+	<h3 style="text-align:center; padding: 10px; color: white; background-color: #EE6C4D;">Profile Photo Upload Module</h3>
+	
+	<h5 style="text-align: center; margin-bottom: 20px; background-color: white;">Choose a photo</h5>
+	
+	<div style=" display: flex; justify-content: center; ">
+	<form action="{% url "accounts:profile_photo_upload" %}" method="post" enctype="multipart/form-data">
+	    {% csrf_token %}
+		{{ form.as_p }}
+	     <button  id="input" class="btn btn" style="margin: 10% auto; margin-left: 80px; color: white; background-color: #EE6C4D;" type="submit" value="submit" >Initialize Upload</button>
+	</form>
+	</div>
+	{% if userprofile.image %}
+	<img src="{{ userprofile.image.url }}">
+
+	{% else %}
+
+	
+
+	{% endif %}
+	</div>
+
+	
+</div>
+</div>
+
+
+{% endblock %}

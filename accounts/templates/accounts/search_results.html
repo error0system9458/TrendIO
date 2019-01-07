@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static "accounts/search_results/stylesheet.css" %}">
+	
+	{% endblock %}
+
+</head>
+<body>
+	{% block body %}
+	<div class="row">
+
+	<div class="col-12" id="search-results-panel" >
+	<h1 >Search Results For "{{search_query}}" </h1>
+	<br>
+	{% if search_query != "" %}
+  {% if users.exists %}
+	{% for user in users %}
+<h3><a href="{% url 'accounts:profile_pk' pk=user.pk %}" style="text-decoration: none;">{{ user.username }}</h3>
+	{% endfor %}
+  {% else %}
+  <h3>The user you're looking for does not exist. Yet.<h3>
+  <h6>Sorry about that. It really is a big world. <img src="https://png.icons8.com/color/48/000000/sad.png"></h6>
+	{% endif %}
+
+
+	{% elif search_query == "" %}
+	<h3>Please Type Something In The Search.</h3>
+	<h6 class="uk-text-muted">Its like Newton's Third Law: Every Action Has An Equal And Opposite Reaction.</h6>
+	{% endif %}
+</div>
+	{% endblock %}
+	</div>
+</div>
+</body>
+</html>

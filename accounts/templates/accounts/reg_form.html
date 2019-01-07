@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Create Account-TrendIO</title>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+
+<div class="card" style="margin: 10px; box-shadow: 2px 10px 50px 1px gray;">
+
+<h1 class="card-title" style="padding: 10px; text-align: center; background-color: azure; border-bottom: solid 5px gray;">Register for a TrendIO account</h1>
+
+
+<div class="card-body">
+
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button class="btn btn-outline-success" type="submit">Register</button>
+</form>
+
+
+</div>
+</div>
+</div>
+{% endblock%}
